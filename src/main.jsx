@@ -20,6 +20,7 @@ import Zara from './Components/Zara/Zara';
 import HM from './Components/H&M/HM';
 import Levis from './Components/Levis/Levis';
 import AuthProvider from './Providers/AuthProvider/AuthProvider';
+import PrivateRoute from './Routes/PrivateRoute/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -40,11 +41,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/add",
-        element: <AddProduct></AddProduct>
+        element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
       },
       {
         path: "/cart",
-        element: <MyCart></MyCart>
+        element: <PrivateRoute><MyCart></MyCart></PrivateRoute>
       },
       {
         path: "/Nike",
