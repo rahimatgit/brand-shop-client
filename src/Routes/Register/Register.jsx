@@ -18,6 +18,7 @@ const Register = () => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);
         const name = form.get('name');
+        const image = form.get('image');
         const email = form.get('email');
         const password = form.get('password');
         const validation = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]).{6,}$/;
@@ -29,9 +30,12 @@ const Register = () => {
             return toast.error('Failed to register! Your password must have at least a capital letter, a special character, and not less than 6 digits.');
         }
 
-        createUser(email, password)
+        createUser(email, password, name, image)
             .then(userCredential => {
                 const currentUser = userCredential.user;
+                currentUser.displayName = name;
+                currentUser.photoURL = image;
+                console.log(currentUser);
                 toast.success('Your registration is successful.')
             })
             .catch(error => {
@@ -59,6 +63,18 @@ const Register = () => {
                             name="name"
                             size="lg"
                             placeholder="enter name"
+                            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                            labelProps={{
+                                className: "before:content-none after:content-none",
+                            }}
+                        />
+                        <Typography variant="h6" color="blue-gray" className="-mb-3">
+                            Your Image
+                        </Typography>
+                        <Input
+                            name="image"
+                            size="lg"
+                            placeholder="enter image url"
                             className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                             labelProps={{
                                 className: "before:content-none after:content-none",
