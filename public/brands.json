@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "image": "https://www.asphaltgold.com/cdn/shop/collections/nike-sportswear_1200x1200.jpg?v=1653640962",
+        "name": "Nike"
+    },
+    {
+        "id": 2,
+        "image": "https://cdn.britannica.com/94/193794-050-0FB7060D/Adidas-logo.jpg",
+        "name": "Adidas"
+    },
+    {
+        "id": 3,
+        "image": "https://www.waterfront.co.za/wp-content/uploads/2018/05/gucci.jpg",
+        "name": "Gucci"
+    },
+    {
+        "id": 4,
+        "image": "https://static.zara.net/stdstatic/5.13.0/images/logo_rss.png",
+        "name": "Zara"
+    },
+    {
+        "id": 5,
+        "image": "https://cdn.hyprop.co.za/image/2021/7/20/c5d53658-6abd-440c-8e42-b47b97003ea6/c37c2de9-ec4a-4553-b062-0691d5a45e09.jpg",
+        "name": "H&M"
+    },
+    {
+        "id": 6,
+        "image": "https://www.levi.com/ngsa/img/logos/levi-logo-large.png",
+        "name": "Levi's"
+    }
+]

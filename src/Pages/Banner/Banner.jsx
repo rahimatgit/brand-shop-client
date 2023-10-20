@@ -11,7 +11,7 @@ const Banner = () => {
                     <div className="max-w-md">
                         <h1 className="mb-5 text-4xl font-bold">Welcome to</h1>
                         <h1 className="mb-5 text-6xl font-extrabold text-white">Elite <span className="text-green-300">Fashion!</span></h1>
-                        <p className="mb-5 text-white font-bold">Explore our selection today and let your accessories reflect your elite style. Discover the perfect finishing touches for every occasion and make your mark in the world of fashion. 
+                        <p className="mb-5 text-center text-lg text-white font-bold">Explore our selection today and let your accessories reflect your elite style. Discover the perfect finishing touches for every occasion and make your mark in the world of fashion. 
                         <span className="text-green-300"> Welcome to Elite Fashion – Where Luxury Meets Lifestyle.</span></p>
 
                     </div>

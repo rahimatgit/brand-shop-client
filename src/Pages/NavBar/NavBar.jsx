@@ -2,7 +2,7 @@ import React from "react";
 import {
     Navbar,
     MobileNav,
-    Typography,
+
     Button,
     IconButton,
 } from "@material-tailwind/react";
@@ -23,17 +23,17 @@ const NavBar = () => {
     const navList = (
         <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
             <NavLink to="/">
-                <Button variant="gradient" className="rounded-full text-orange-300">
+                <Button variant="gradient" className="rounded-full text-green-300">
                     Home
                 </Button>
             </NavLink>
             <NavLink to="/add">
-                <Button variant="gradient" className="rounded-full text-orange-300">
+                <Button variant="gradient" className="rounded-full text-green-300">
                     Add Product
                 </Button>
             </NavLink>
             <NavLink to="/cart" className="">
-                <Button variant="gradient" className="rounded-full text-orange-300">
+                <Button variant="gradient" className="rounded-full text-green-300">
                     My Cart
                 </Button>
             </NavLink>
@@ -48,7 +48,7 @@ const NavBar = () => {
                 <div className="flex items-center gap-x-1">
                     <Button variant="text" size="sm" className="hidden lg:inline-block">
                         <NavLink to="/login">
-                            <Button variant="gradient" className="rounded-full text-orange-300">
+                            <Button variant="gradient" className="rounded-full text-green-300">
                                 Login
                             </Button>
                         </NavLink>
@@ -97,11 +97,8 @@ const NavBar = () => {
                 <div className="container mx-auto">
                     {navList}
                     <div className="flex items-center gap-x-1">
-                        <Button fullWidth variant="text" size="sm" className="">
-                            <span>Log In</span>
-                        </Button>
-                        <Button fullWidth variant="gradient" size="sm" className="">
-                            <span>Sign in</span>
+                        <Button  variant="gradient" size="sm" className="text-green-300">
+                            <span>Log in</span>
                         </Button>
                     </div>
                 </div>
