@@ -1,20 +1,47 @@
 import {
     Card,
     Input,
-    Checkbox,
+
     Button,
     Typography,
 } from "@material-tailwind/react";
 
 const AddProduct = () => {
+
+    const handleAddProduct = e => {
+        e.preventDefault();
+        const form = new FormData(e.currentTarget);
+        const brandName = form.get('brand-name');
+        const productName = form.get('product-name');
+        const image = form.get('image');
+        const type = form.get('type');
+        const price = form.get('price');
+        const description = form.get('description');
+        const newProduct = { brandName, productName, image, type, price, description };
+
+        fetch('https://assignment-10-brand-shop-server-mdxyli8dc-rahims-projects.vercel.app/products', {
+            method: 'POST',
+            headers: {
+                "content-type": "application/json"
+                ,
+            },
+            body: JSON.stringify(newProduct)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+    }
+
+
+
+
     return (
         <div className="w-full md:w-[40%] mt-12 mx-auto rounded-2xl flex justify-center bg-green-100 px-6 py-12">
             <Card color="transparent" shadow={false}>
                 <Typography variant="h4" color="blue-gray">
                     Add Your Product
                 </Typography>
-                
-                <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+
+                <form onSubmit={handleAddProduct} className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
                     <div className="mb-1 flex flex-col gap-6">
                         <Typography variant="h6" color="blue-gray" className="-mb-3">
                             Brand Name
@@ -88,12 +115,12 @@ const AddProduct = () => {
                                 className: "before:content-none after:content-none",
                             }}
                         />
-                        
-                        
+
+
                     </div>
-                   
+
                     <Button className="mt-6" fullWidth>
-                    <input type="submit" value="Add Product" />
+                        <input type="submit" value="Add Product" />
                     </Button>
 
                 </form>

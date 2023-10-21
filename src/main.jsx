@@ -13,14 +13,10 @@ import Register from './Routes/Register/Register';
 import Home from './Routes/Home/Home';
 import AddProduct from './Routes/AddProduct/AddProduct'
 import MyCart from './Routes/MyCart/MyCart';
-import Nike from './Components/Nike/Nike';
-import Adidas from './Components/Adidas/Adidas';
-import Gucci from './Components/Gucci/Gucci';
-import Zara from './Components/Zara/Zara';
-import HM from './Components/H&M/HM';
-import Levis from './Components/Levis/Levis';
 import AuthProvider from './Providers/AuthProvider/AuthProvider';
 import PrivateRoute from './Routes/PrivateRoute/PrivateRoute';
+import Products from './Components/Products/Products';
+import ProductDetails from './Components/ProductsDetails/ProductDetails';
 
 const router = createBrowserRouter([
   {
@@ -48,28 +44,20 @@ const router = createBrowserRouter([
         element: <PrivateRoute><MyCart></MyCart></PrivateRoute>
       },
       {
-        path: "/Nike",
-        element: <Nike></Nike>
+        path: "/products/:brandName",
+        element: <Products></Products>,
+        loader: ({ params }) => {
+          console.log(params.brandName)
+          return fetch(`https://assignment-10-brand-shop-server.vercel.app/products/${params.brandName}`)
+        }
       },
       {
-        path: "/Adidas",
-        element: <Adidas></Adidas>
-      },
-      {
-        path: "/Gucci",
-        element: <Gucci></Gucci>
-      },
-      {
-        path: "/Zara",
-        element: <Zara></Zara>
-      },
-      {
-        path: "/H&M",
-        element: <HM></HM>
-      },
-      {
-        path: "/Levi's",
-        element: <Levis></Levis>
+        path: "/products/:brandName/:id",
+        element: <ProductDetails></ProductDetails>,
+        loader: ({params}) => {
+          console.log();
+          return fetch(`https://assignment-10-brand-shop-server.vercel.app/products/${params.brandName}/${params.id}`)
+        }
       }
     ]
   },
@@ -78,9 +66,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-    <ThemeProvider>
-    <RouterProvider router={router} />
-    </ThemeProvider>
+      <ThemeProvider>
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </AuthProvider>
   </React.StrictMode>,
 )
