@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import ProductDetails from "../ProductsDetails/ProductDetails";
 import { Carousel} from "@material-tailwind/react";
+import EmptyProduct from "../EmptyProduct/EmptyProduct";
 
 const Products = () => {
 
@@ -33,6 +34,7 @@ const Products = () => {
                 products.map(product => <ProductDetails key={product._id} product={product}></ProductDetails>)
             }
         </div>
+
         </div>
        
     );

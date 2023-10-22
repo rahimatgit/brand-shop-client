@@ -19,6 +19,7 @@ import Products from './Components/Products/Products';
 
 import Details from './Components/Details/Details';
 import Update from './Routes/Update/Update';
+import Error from './Routes/Error/Error';
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/update/:name/:id",
-        element: <Update></Update>,
+        element: <PrivateRoute><Update></Update></PrivateRoute>,
         loader: ({params}) => {
           return fetch(`https://assignment-10-brand-shop-server.vercel.app/products/${params.name}/${params.id}`)
         }
@@ -63,11 +64,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/products/:name/:id",
-        element: <Details></Details>,
+        element: <PrivateRoute><Details></Details></PrivateRoute>,
         loader: ({params}) => {
           
           return fetch(`https://assignment-10-brand-shop-server.vercel.app/products/${params.name}/${params.id}`)
         }
+      },
+      {
+        path: "*",
+        element: <Error></Error>
       }
     ]
   },

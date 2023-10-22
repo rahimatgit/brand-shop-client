@@ -13,8 +13,8 @@ import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 import toast, { Toaster } from 'react-hot-toast';
 const Details = () => {
 
-    const { user } = useContext(AuthContext);
-    const email = user.email;
+
+
     const data = useLoaderData();
     const { image, productName, price, description, type } = data;
     console.log(data);
