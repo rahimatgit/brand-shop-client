@@ -8,6 +8,7 @@ import {
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
+import DarkMode from "../../Components/DarkMode/DarkMode";
 
 const NavBar = () => {
 
@@ -44,6 +45,7 @@ const NavBar = () => {
                     My Cart
                 </Button>
             </NavLink>
+            <DarkMode></DarkMode>
         </ul>
     );
 
@@ -66,11 +68,11 @@ const NavBar = () => {
                     
                         <div className="flex flex-col mt-5 md:mt-0 lg:mt-0 md:flex-row lg:flex-row items-center ">
                             <div className="avatar mx-3 mt-2 md:mt-0 lg:mt-0">
-                                <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                <div className="w-10 rounded-full ring  ring-green-400 ring-offset-2">
                                     <img src={user.photoURL} />
                                 </div>
                             </div>
-                            <p className="mx-3 mt-2 md:mt-0 lg:mt-0">{user.displayName}</p>
+                            <p className="mx-3 text-green-500 mt-2 md:mt-0 lg:mt-0">{user.displayName}</p>
                             
                             <Button onClick={handleLogout} variant="gradient" className="rounded-full text-green-300">
                                 Log Out

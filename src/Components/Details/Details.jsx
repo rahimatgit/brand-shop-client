@@ -3,11 +3,9 @@ import {
     Card,
     CardHeader,
     CardBody,
-    CardFooter,
     Typography,
-    Avatar,
-    Tooltip,
     Button,
+    CardFooter,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
@@ -15,15 +13,16 @@ import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 
 const Details = () => {
 
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const email = user.email;
     const data = useLoaderData();
-    const { image, name, price, description } = data;
+    const { image, productName, price, description, type } = data;
     console.log(data);
 
+
     const handleCart = () => {
-       const data = {image, price, name, email};
-       fetch('https://assignment-10-brand-shop-server.vercel.app/carts', {
+        const data = { image, price, name, email };
+        fetch('https://assignment-10-brand-shop-server.vercel.app/carts', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"
@@ -33,38 +32,42 @@ const Details = () => {
         })
             .then(res => res.json())
             .then(data => console.log(data))
-        
+
     }
 
     return (
-        <div>
-            <Card className="max-w-[24rem] overflow-hidden">
+        <div className="w-[80%] mx-auto flex justify-center mt-20">
+            <Card className="w-full max-w-[48rem] flex-row">
                 <CardHeader
-                    floated={false}
                     shadow={false}
-                    color="transparent"
-                    className="m-0 rounded-none"
+                    floated={false}
+                    className="m-0 w-2/5 shrink-0 rounded-r-none"
                 >
                     <img
                         src={image}
-                        alt="ui/ux review check"
+                        alt="card-image"
+                        className="h-full w-full object-cover"
                     />
                 </CardHeader>
                 <CardBody>
-                    <Typography variant="h4" color="blue-gray">
-                        UI/UX Review Check
+                    <Typography variant="h6" color="gray" className="mb-4 uppercase">
+                        {type}
                     </Typography>
-                    <Typography variant="lead" color="gray" className="mt-3 font-normal">
-                        Because it&apos;s about motivating the doers. Because I&apos;m here to
-                        follow my dreams and inspire others.
+                    <Typography variant="h4" color="blue-gray" className="mb-2">
+                        {productName}
                     </Typography>
+                    <Typography color="gray" className="mb-8 font-normal">
+                        {description}
+                    </Typography>
+                    <Typography color="gray" className="mb-8 font-normal">
+                        {price} $
+                    </Typography>
+                    <a href="#" className="inline-block">
+                        <Button onClick={handleCart} variant="gradient" className="rounded-full text-green-300">
+                            Add to Cart
+                        </Button>
+                    </a>
                 </CardBody>
-                <CardFooter className="flex items-center justify-between">
-                    <Button onClick={handleCart} variant="gradient" className="rounded-full text-green-300">
-                        Add to Cart
-                    </Button>
-                    <Typography className="font-normal">January 10</Typography>
-                </CardFooter>
             </Card>
         </div>
     );
