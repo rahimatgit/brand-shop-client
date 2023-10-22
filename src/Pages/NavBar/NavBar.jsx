@@ -39,7 +39,7 @@ const NavBar = () => {
                     Add Product
                 </Button>
             </NavLink>
-            <NavLink to="/cart" className="">
+            <NavLink to="/carts" className="">
                 <Button variant="gradient" className="rounded-full text-green-300">
                     My Cart
                 </Button>

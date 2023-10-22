@@ -16,7 +16,8 @@ import MyCart from './Routes/MyCart/MyCart';
 import AuthProvider from './Providers/AuthProvider/AuthProvider';
 import PrivateRoute from './Routes/PrivateRoute/PrivateRoute';
 import Products from './Components/Products/Products';
-import ProductDetails from './Components/ProductsDetails/ProductDetails';
+
+import Details from './Components/Details/Details';
 
 const router = createBrowserRouter([
   {
@@ -40,8 +41,9 @@ const router = createBrowserRouter([
         element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
       },
       {
-        path: "/cart",
-        element: <PrivateRoute><MyCart></MyCart></PrivateRoute>
+        path: "/carts",
+        element: <PrivateRoute><MyCart></MyCart></PrivateRoute>,
+        loader: () => fetch('https://assignment-10-brand-shop-server.vercel.app/carts')
       },
       {
         path: "/products/:brandName",
@@ -52,11 +54,11 @@ const router = createBrowserRouter([
         }
       },
       {
-        path: "/products/:brandName/:id",
-        element: <ProductDetails></ProductDetails>,
+        path: "/products/:name/:id",
+        element: <Details></Details>,
         loader: ({params}) => {
-          console.log();
-          return fetch(`https://assignment-10-brand-shop-server.vercel.app/products/${params.brandName}/${params.id}`)
+          
+          return fetch(`https://assignment-10-brand-shop-server.vercel.app/products/${params.name}/${params.id}`)
         }
       }
     ]
