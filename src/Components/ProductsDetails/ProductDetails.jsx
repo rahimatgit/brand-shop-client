@@ -42,7 +42,11 @@ const ProductDetails = ({ product }) => {
                         Details
                     </Button>
                 </Link>
-                <Typography className="font-normal">January 10</Typography>
+                <Link to={`/update/${brandName}/${_id}`}>
+                    <Button variant="gradient" className="rounded-full text-green-300">
+                        Update
+                    </Button>
+                </Link>
             </CardFooter>
         </Card>
     );

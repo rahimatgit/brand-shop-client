@@ -1,8 +1,21 @@
 
 
-const SingleCart = ({cart}) => {
+const SingleCart = ({cart, carts, setCarts}) => {
 
-    const {name, image} = cart;
+    const {name, image, _id} = cart;
+
+    const handleDelete = _id => {
+        
+        fetch(`https://assignment-10-brand-shop-server.vercel.app/carts/${_id}`,{
+            method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            const remaining = carts.filter(cartProduct => cartProduct._id !== _id);
+            setCarts(remaining);
+        })
+    }
 
     return (
         <div>
@@ -12,7 +25,7 @@ const SingleCart = ({cart}) => {
                     <h2 className="card-title">{name}</h2>
                     <p>Click the button to watch on Jetflix app.</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Watch</button>
+                        <button onClick={ () => handleDelete(_id)} className="btn bg-red-600 text-white">Delete</button>
                     </div>
                 </div>
             </div>

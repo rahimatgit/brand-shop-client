@@ -18,6 +18,7 @@ import PrivateRoute from './Routes/PrivateRoute/PrivateRoute';
 import Products from './Components/Products/Products';
 
 import Details from './Components/Details/Details';
+import Update from './Routes/Update/Update';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,13 @@ const router = createBrowserRouter([
       {
         path: "/add",
         element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
+      },
+      {
+        path: "/update/:name/:id",
+        element: <Update></Update>,
+        loader: ({params}) => {
+          return fetch(`https://assignment-10-brand-shop-server.vercel.app/products/${params.name}/${params.id}`)
+        }
       },
       {
         path: "/carts",
