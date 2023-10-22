@@ -6,7 +6,7 @@ import {
     Button,
     Typography,
 } from "@material-tailwind/react";
-
+import toast, { Toaster } from 'react-hot-toast';
 const Update = () => {
 
     const update = useLoaderData();
@@ -32,7 +32,9 @@ const Update = () => {
             body: JSON.stringify(updatedProduct)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                toast.success('Your product is updated successfully.')
+            })
     }
 
     return (
@@ -133,6 +135,7 @@ const Update = () => {
 
                     </form>
                 </Card>
+                <Toaster></Toaster>
             </div>
         </div>
     );

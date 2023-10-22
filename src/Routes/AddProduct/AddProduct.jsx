@@ -5,7 +5,7 @@ import {
     Button,
     Typography,
 } from "@material-tailwind/react";
-
+import toast, { Toaster } from 'react-hot-toast';
 const AddProduct = () => {
 
     const handleAddProduct = e => {
@@ -28,7 +28,9 @@ const AddProduct = () => {
             body: JSON.stringify(newProduct)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                toast.success('Your product is added successfully.')
+                console.log(data)})
     }
 
 
@@ -125,6 +127,7 @@ const AddProduct = () => {
 
                 </form>
             </Card>
+            <Toaster></Toaster>
         </div>
     );
 };

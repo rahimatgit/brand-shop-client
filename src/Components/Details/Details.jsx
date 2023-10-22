@@ -10,7 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
-
+import toast, { Toaster } from 'react-hot-toast';
 const Details = () => {
 
     const { user } = useContext(AuthContext);
@@ -21,7 +21,7 @@ const Details = () => {
 
 
     const handleCart = () => {
-        const data = { image, price, name, email };
+        const data = { image, price, productName, description };
         fetch('https://assignment-10-brand-shop-server.vercel.app/carts', {
             method: 'POST',
             headers: {
@@ -31,7 +31,7 @@ const Details = () => {
             body: JSON.stringify(data)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => toast.success('Product added to cart.'))
 
     }
 
@@ -69,6 +69,7 @@ const Details = () => {
                     </a>
                 </CardBody>
             </Card>
+            <Toaster></Toaster>
         </div>
     );
 };

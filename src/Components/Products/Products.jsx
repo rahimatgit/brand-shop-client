@@ -8,29 +8,33 @@ const Products = () => {
 
     console.log(products);
     return (
-        <div className="w-[70%] mx-auto mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
             <Carousel className="rounded-xl w-full">
                 <img
-                    src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
+                    src="https://publish.purewow.net/wp-content/uploads/sites/2/2023/04/summer-fashion-trends-2023-UNI.jpg?fit=1025%2C550"
                     alt="image 1"
                     className="h-full w-full object-cover"
                 />
                 <img
-                    src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
+                    src="https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-1708732054.jpg?c=16x9&q=h_720,w_1280,c_fill"
                     alt="image 2"
                     className="h-full w-full object-cover"
                 />
                 <img
-                    src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80"
+                    src="https://stylecaster.com/wp-content/uploads/2023/08/mensfashiontrends.jpg"
                     alt="image 3"
                     className="h-full w-full object-cover"
                 />
             </Carousel>
-            <br />
+            <h1 className="text-6xl font-extrabold text-center ">Our <span className="text-green-400">Products</span></h1>
+            <div className="w-[70%] mx-auto mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+            
             {
                 products.map(product => <ProductDetails key={product._id} product={product}></ProductDetails>)
             }
         </div>
+        </div>
+       
     );
 };
 
